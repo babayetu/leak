@@ -7,6 +7,7 @@ public class ClassLoaderTest {
 		    System.out.println(loader);  
 		    loader = loader.getParent();    //获得父类加载器的引用  
 		}  
-		System.out.println(loader); 
+		System.out.println(loader); 	//最后打印BootStrp classload C++实现, null
+		// System.out.println(System.getProperty("sun.boot.class.path"));
 	}
 }
