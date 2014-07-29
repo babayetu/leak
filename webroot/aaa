@@ -1,0 +1,144 @@
+---------start point---------
+[1:54:29 AM] alijones57544: Hi is our ticket PPRISK-9040 all set up for slow ISO today?  Just checking the status.
+[2:01:44 AM] sridharsa3: hi
+[2:03:27 AM] alijones57544: .
+[2:05:08 AM] hemant.sharma.2211: Push  is deplayed by ~20 minutes
+[2:06:11 AM] alijones57544: OK, sure.  No problem :)!
+[2:06:24 AM] hemant.sharma.2211: these are for today
+[2:06:24 AM] hemant.sharma.2211: PPRISK-9040; PPPLBUS-890; PPTITECH-375; PPBLRAC-96
+[2:06:50 AM] sridharsa3: sridhar r for ppplbus-890
+[2:07:16 AM] dtiwanpp: here for idiworkflowserv
+[2:07:51 AM] alijones57544: Alicia here for PPRISK-9040 risknebulamsgd/risknebulamsgd_analytics
+[2:21:15 AM] sashikala.ramchander: we are seeing some issues with slow IDO through appian
+[2:21:20 AM] sashikala.ramchander: we are looking into it
+[2:21:28 AM] sashikala.ramchander: please be on standby
+[2:21:36 AM] hemant.sharma.2211: not ready for push yet , we have to wait for some more time
+[2:22:56 AM] sashikala.ramchander: rpm validation is going
+[2:23:15 AM] sashikala.ramchander: is should be ready for the push shortly
+[2:31:08 AM] sashikala.ramchander: Following components are approved in TurboRoller  
+•  CR Number : CHNGE23109786
+•  Components : 
+idiworkflowserv-116.0-12069281.i686.rpm
+riskactionsdecisionserv-116.0-12070634.i686.rpm
+risknebulamsgd-116.0-12070545.i686.rpm
+risknebulamsgd_analytics-116.0-12055720.i686.rpm 
+
+•  TR ID : ISO_live-64.0_20140728_7
+[2:31:33 AM] sashikala.ramchander: @Hemant - you can start the push
+[2:33:21 AM] hemant.sharma.2211: ok , it wil take ~ 10 minutes to prepare  & start
+[2:33:39 AM] hemant.sharma.2211: I will start at 11.45
+[2:33:43 AM] sashikala.ramchander: ok
+[2:46:50 AM] hemant.sharma.2211: Starting push now
+[2:48:20 AM] hemant.sharma.2211: in progress ..
+[2:51:37 AM] abhikuru: Hemant which boxes is risknebulamsgd being released to?
+[2:53:05 AM] hemant.sharma.2211: Push done for 
+
+idiworkflowserv-116.0-12069281.i686.rpm 
+slcidiwle1.ppp.slc slcidiwle10.ppp.slc slcidiwle11.ppp.slc slcidiwle12.ppp.slc slcidiwle13.ppp.slc slcidiwle14.ppp.slc  
+
+risknebulamsgd-116.0-12070545.i686.rpm  
+risknebulamsgd_analytics-116.0-12055720.i686.rpm 
+slcidiriskdaemon1.ppp.slc slcidiriskdaemon10.ppp.slc slcidiriskdaemon11.ppp.slc slcidiriskdaemon12.ppp.slc slcidiriskdaemon13.ppp.slc slcidiriskdaemon14.ppp.slc slcidiriskdaemon15.ppp.slc slcidiriskdaemon16.ppp.slc slcidiriskdaemon17.ppp.slc slcidiriskdaemon18.ppp.slc slcidiriskdaemon19.ppp.slc slcidiriskdaemon2.ppp.slc
+[2:54:09 AM] hemant.sharma.2211: .
+[2:54:10 AM] sridharsa3: riskactionsdecisionserv ?
+[2:54:15 AM] hemant.sharma.2211: riskactionsdecisionserv-116.0-12070634.i686.rpm 
+slcriskrads501a
+[2:55:02 AM] sridharsa3: ok
+[3:00:39 AM] sashikala.ramchander: is push all good ?
+[3:02:27 AM] sridharsa3: yes sign off for riskactionsdecisionserv good to proceed for normal iso
+[3:06:24 AM] alijones57544: checking nebula - a few minutes please.
+[3:17:18 AM | Edited 3:17:29 AM] sashikala.ramchander: is slow push  good for risknebulamsgd-116.0-12070545.i686.rpm  ?
+[3:17:46 AM] abhikuru: Alicia, I'm checking terracota TMC
+[3:18:19 AM] abhikuru: and i see LIVE_ProxCache statics.. it seems to be initialized :)
+[3:18:31 AM] alijones57544: Still checking nebula.  Looks good so far but we would like to wait for CAL report if we can.
+[3:18:45 AM] abhikuru: ok
+[3:25:07 AM] hemant.sharma.2211: I will close CR , if you see any issue you can come back before 3 to pull it from 4 pm
+[3:26:06 AM] alijones57544: OK, sounds good - I was just about to type that as CAL looks way behind on producing report.  Thank you for the slow roll.
+[3:26:56 AM] ankit.talati: we are good on idiworkflowserv for now
+[3:27:15 AM] hemant.sharma.2211: thanks
+[3:27:19 AM] alijones57544: So calling it good for risknebulamsgd/risknebulamsgd_analytics
+[3:27:21 AM] ankit.talati: we will keep monitoring till the time of regular ISO and let you guys know if something changes
+[3:28:27 AM] sashikala.ramchander: thank you all
+[3:28:37 AM] sashikala.ramchander: we are set for regular push
+[6:49:36 AM] dtiwanpp: anybody here?
+[6:49:45 AM] dtiwanpp: I am here for idiworkflowserv
+[6:51:18 AM] sashikala.ramchander: [5:11 AM] Sashikala Ramchander: 
+
+<<< claimsmetadataserv-116.0-12055092.i686.rpm
+idiworkflowserv-116.0-12069281.i686.rpm
+merchantcashadvanceserv-116.0-12020233.i686.rpm
+riskactionsdecisionserv-116.0-12070634.i686.rpm
+riskauthenticationserv_analytics-116.0-12092961.i686.rpm
+risknebulamsgd-116.0-12070545.i686.rpm
+risknebulamsgd_analytics-116.0-12055720.i686.rpm
+riskprofileserv-116.0-12072564.i686.rpm
+[6:51:19 AM] sridharsa3: sridhar r for
+[6:51:26 AM] alijones57544: I (Alicia) am here for risknebulamsgd + risknebulamsgd_analytics.
+[6:51:29 AM] hemant.sharma.2211: Hi Push starts at 4
+[6:51:29 AM] sridharsa3: ppplbus-890
+[6:51:34 AM] sridharsa3: riskactionsdecisionserv
+[6:51:38 AM] sashikala.ramchander: anyone here for the above apps?
+[6:52:58 AM] renu.menon8: PD here for claimsmetadataserv-116.0-12055092.i686.rpm
+[6:53:21 AM] Qinghai Fu: qinghai for riskauthenticationserv_analytics
+[6:54:03 AM] benho_work: here for risknebulamsgd
+[7:00:00 AM] Qinghai Fu: hi Sashikala/hemant please restart riskauthenticationserv after deployed riskauthenticationserv_analytics
+[7:00:44 AM] hemant.sharma.2211: k
+[7:00:59 AM] dtiwanpp: here for idiworkflowserv
+[7:01:37 AM | Edited 7:05:06 AM] hemant.sharma.2211: Starting push for SLC A
+.. in progress
+[7:05:01 AM] Ying Lai: here for riskprofileserv.
+[7:12:51 AM] Qinghai Fu: hi hemant, please restart some boxes of pushed riskauthenticationserv for verification, thanks!
+[7:15:31 AM] alijones57544: @Hemant, Sashikala: Any handy-dandy push progress web page today?
+[7:17:59 AM] Qinghai Fu: @alicia, this one? https://rm.paypal.com/CHNGE?CR=CHNGE23120147
+[7:21:01 AM] hemant.sharma.2211: Complete in SLC A 
+riskactionsdecisionserv-116.0-12070634.i686.rpm 
+idiworkflowserv-116.0-12069281.i686.rpm
+[7:21:10 AM] hemant.sharma.2211: rest in progress ..
+[7:21:23 AM] alijones57544: @qinghaifu:  Yep.  Thank you!
+[7:21:35 AM] dtiwanpp: verifying
+[7:21:38 AM] dtiwanpp: thanks
+[7:22:28 AM] cbrink_pp: @Alicia: in the future, if you get the push emails with the CHNGE ticket numbers in them, you can construct the URL for the push monitor tool
+[7:35:05 AM] Ying Lai: @Hemant, the tier one service riskpretxngatewayserv still needs to be restarted after riskprofileserv's push. We are working on removing the this tier one service but it needs some time to accomplish.
+[7:35:43 AM] sridharsa3: riskactionsdecisionserv looks good on slc-a
+[7:36:02 AM] sridharsa3: (there is a legacy issue which causes deployment failure on cri
+[7:36:10 AM] sridharsa3: it might still be there
+[7:36:18 AM] sridharsa3: we are working with appsec on this
+[7:36:27 AM] sridharsa3: so u may still see cri failure)
+[7:38:41 AM] hemant.sharma.2211: Push done for  SLC A  & PHX
+[7:39:12 AM] hemant.sharma.2211: RISKAUTHENTICATIONSERV  restarts in progress
+[7:40:22 AM] hemant.sharma.2211: Sarting Sandbox & slc B
+[7:40:27 AM] Qinghai Fu: thanks hemant, I am checking
+[7:47:41 AM] Ying Lai: Hi Hemant, have you restarted riskpretxngatewayserv after riskprofileserv's push?
+[7:53:13 AM] hemant.sharma.2211: no ,  this issue  has not been fixed yet  ?
+[7:54:34 AM | Edited 7:55:18 AM] hemant.sharma.2211: I am starting it , can you please send me email why it is needed and I will follow up  , there should not be such  dependency
+[7:55:07 AM] Ying Lai: @Hemant, No, We we are working on removing the tier one but it can only release with a BWR. We need to do thorough testing with most of the clients.
+[7:55:12 AM] renu.menon8: claimsmetadataserv looks good . Signing off (PPBLRAC-153).
+[7:55:15 AM] Ying Lai: Sure, Let me send you email.
+[7:56:51 AM] alijones57544: @Hemant, could you please restart risknebulamsgd on slcidiriskdaemon30.  TIA!
+[7:57:19 AM] hemant.sharma.2211: Push  is complete for SLC PHX ; please test & sign off
+[8:00:39 AM] hemant.sharma.2211: RISKPRETXNGATEWAYSERV  - restarts done
+[8:01:16 AM] hemant.sharma.2211: [7:56 AM] Alicia Jones: 
+
+<<< restart risknebulamsgd on slcidiriskdaemon30
+[8:01:20 AM] hemant.sharma.2211: done
+[8:06:52 AM] alijones57544: Thanks Hemant!
+
+We are signing off risknebulamsgd & risknebulamsgd_analytics (PPRISK-9040)
+[8:07:49 AM] sridharsa3: sign off for riskactionsdecisionserv ppblrac-890
+[8:08:54 AM] hemant.sharma.2211: thanks
+[8:10:12 AM] renu.menon8: Sign off claimsmetadataserv PPBLRAC-153
+[8:10:33 AM] dtiwanpp: Hi Hemant sign off on idiworkflowserv release. Can you please acknowledge sign off? thanks
+[8:12:34 AM] Qinghai Fu: hi hemant, sign off for riskauthenticationserv_analytics , thanks a lot!
+[8:13:04 AM] hemant.sharma.2211: thnaks
+[8:15:37 AM] Ying Lai: Thanks Hemant. I sent you email about the details. riskprofileserv looks good. We are signing off for riskprofileserv.
+[8:16:59 AM] hemant.sharma.2211: thank you
+[8:28:50 AM] hemant.sharma.2211: Pending Sign off
+[8:28:54 AM] hemant.sharma.2211: merchantcashadvanceserv-116.0-12020233.i686.rpm
+[9:42:52 AM] Cindy: .
+[9:58:57 AM] gopipaypal: ,
+[10:13:58 AM] sashikala.ramchander: Hi Hemant
+[10:30:54 AM] *** Cindy added veshukla ***
+[10:33:04 AM] Cindy: .
+[10:45:41 AM] Cindy: merchantcashadvanceserv looks ok with CAL log and siteview -- veshukla
+[3:23:07 PM] *** Qinghai Fu added chessdollar ***
+---------end point---------
