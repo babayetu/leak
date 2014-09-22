@@ -86,7 +86,7 @@ public class HttpProcessorCh3 {
 			int pos = uri.indexOf("://");
 			if (pos != -1) {
 				pos = uri.indexOf('/', pos + 3);
-				if (pos != -1) {
+				if (pos == -1) {
 					uri = "";
 				} else {
 					uri = uri.substring(pos);
@@ -94,8 +94,41 @@ public class HttpProcessorCh3 {
 			}
 		}
 		
+		// Parse any requested session ID out of the request URI
+		String match = ";jsessionid=";
+		int semicolon = uri.indexOf(match);
+		if (semicolon!=-1) {
+			String rest = uri.substring(semicolon + match.length());
+			int semicolon2 = rest.indexOf(";");
+			if (semicolon2 != -1) {
+				request.setRequestedSessionId(rest.substring(0,semicolon2));
+				rest = rest.substring(semicolon2);
+			} else {
+				request.setRequestedSessionId(rest);
+				rest="";
+			}
+			request.setRequestedSessionURL(true); 
+			uri = uri.substring(0, semicolon) + rest;
+		} else { 
+			request.setRequestedSessionId(null); 
+			request.setRequestedSessionURL(false); 
+		}
 		
+		// Normalize URI (using String operations at the moment)
+		String normalizedUri = normalize(uri);
 		
+		// Set the corresponding request properties
+		((HttpRequest) request).setMethod(method);
+		request.setProtocol(protocol);
+		
+		if (normalizedUri != null) { 
+			((HttpRequest) request).setRequestURI(normalizedUri); 
+		} else { 
+			((HttpRequest) request).setRequestURI(uri); 
+		}
+		if (normalizedUri == null) { 
+			throw new ServletException("Invalid URI: " + uri + "'"); 
+		}
 	}
 	
 	
