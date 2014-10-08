@@ -16,7 +16,7 @@ public class HttpServerCh2 {
 			serverSo = new ServerSocket(2222, 1,
 					InetAddress.getByName("127.0.0.1"));
 			System.out.println("http server started. File home: "
-					+ Constant.WEB_ROOT);
+					+ Constants.WEB_ROOT);
 			boolean shutDown = false;
 			Socket so = null;
 			InputStream is = null;
@@ -37,7 +37,7 @@ public class HttpServerCh2 {
 
 				System.out.println(req.parseRequest());
 				if (req.getUri() != null
-						&& req.getUri().equalsIgnoreCase(Constant.SHUTDOWN)) {
+						&& req.getUri().equalsIgnoreCase(Constants.SHUTDOWN)) {
 					shutDown = true;
 				}
 

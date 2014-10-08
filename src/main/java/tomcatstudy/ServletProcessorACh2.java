@@ -21,7 +21,7 @@ public class ServletProcessorACh2 {
 		Class<?> myclass = null;
 		
 		try {
-			File classPath = new File(Constant.WEB_ROOT);
+			File classPath = new File(Constants.WEB_ROOT);
 			
 			System.out.println(className);
 			//结尾是/代表一个库目录，结尾不是/代表是一个jar包文件名

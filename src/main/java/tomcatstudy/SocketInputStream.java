@@ -103,7 +103,7 @@ public class SocketInputStream extends InputStream {
      * The string manager for this package.
      */
     protected static StringManager sm =
-        StringManager.getManager(Constants.Package);
+        StringManager.getManager("tomcatstudy");
 
 
     // ----------------------------------------------------- Instance Variables
@@ -138,9 +138,9 @@ public class SocketInputStream extends InputStream {
                 chr = -1;
             }
         } while ((chr == CR) || (chr == LF));
-        if (chr == -1)
-            throw new EOFException
-                (sm.getString("requestStream.readline.error"));
+        if (chr == -1);
+//            throw new EOFException
+//                (sm.getString("requestStream.readline.error"));
         pos--;
 
         // Reading the method name
