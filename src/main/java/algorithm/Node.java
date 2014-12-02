@@ -1,5 +1,10 @@
 package algorithm;
 
+/**
+ * Node是用来辅助找到Vertex的数据结构，flag信息记录在Vertex里面
+ * @author jingjliu
+ *
+ */
 public class Node {
 	Node next;
 	String name;

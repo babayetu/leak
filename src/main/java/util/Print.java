@@ -1,6 +1,10 @@
 package util;
 
+import java.util.ArrayList;
+
 import algorithm.BSTNode;
+import algorithm.Graph;
+import algorithm.Vertex;
 
 public class Print {
 	public static void array (int[] client) {
@@ -52,6 +56,7 @@ public class Print {
 		System.out.println(client.getKey()+ ":"+ client.getValue());
 	}
 	
+	//打印linkedlist
 	public void linkedListFromLeft (BSTNode client) {
 		assert(client!=null);
 		StringBuffer sb = new StringBuffer();
@@ -76,5 +81,29 @@ public class Print {
 			leftSon = leftSon.getLeft();
 		}
 		System.out.println(sb.toString());		
+	}
+	
+	//打印图topo排序结果
+	public void DirectionalGraphTopo(Graph a) {
+		ArrayList<Vertex> av = a.getVa();
+		StringBuffer sb = new StringBuffer();
+		
+		for (int i =0;i<av.size();i++) {
+			sb.append(av.get(i).getName()).append(":").append(av.get(i).getTopoNum()).append("\n");
+		}
+		System.out.println(sb.toString());
+	}
+	
+	//打印图topo最短路径
+	public void DirectionalGraphShortest(Graph a) {
+		ArrayList<Vertex> av = a.getVa();
+		StringBuffer sb = new StringBuffer();
+		
+		for (int i =0;i<av.size();i++) {
+			sb.append(av.get(i).getName()).append(":").append(" dist:").append(av.get(i).getDistance())
+			          .append(" path:").append(av.get(i).getPathVertex().getName())
+			          .append("\n");
+		}
+		System.out.println(sb.toString());
 	}
 }
