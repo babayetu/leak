@@ -34,6 +34,7 @@ public class TopoSort {
 		}
 		
 		if (count != vContainer.size()) {
+			System.out.println(count);
 			throw new CycleFoundException();
 		}
 	}

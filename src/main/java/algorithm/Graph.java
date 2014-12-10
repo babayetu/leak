@@ -6,6 +6,7 @@ public class Graph {
 	private ArrayList<Vertex> va;
 	private static Graph directionalNoLoopGraph = null;
 	private static Graph directionalLoopedGraph = null;
+	private static Graph costDAG = null;
 
 	public ArrayList<Vertex> getVa() {
 		return va;
@@ -64,6 +65,42 @@ public class Graph {
 		
 		return directionalNoLoopGraph;		
 	}
+
+	//创建带权 有向无环图(DAG)
+	public static Graph buildCostDAG() {
+		if (costDAG == null) {
+			costDAG = new Graph();
+			Vertex v1 = new Vertex("v1");
+			Vertex v2 = new Vertex("v2");
+			Vertex v3 = new Vertex("v3");
+			Vertex v4 = new Vertex("v4");
+			Vertex v5 = new Vertex("v5");
+			Vertex v6 = new Vertex("v6");
+			Vertex v7 = new Vertex("v7");
+			
+			//添加edge和顶点
+			v1.addEdge(new Node("v2", v2,2)).addEdge(new Node("v4", v4,1));			
+			v2.addEdge(new Node("v4", v4,3)).addEdge(new Node("v5", v5,10));			
+			v3.addEdge(new Node("v1", v1,4)).addEdge(new Node("v6", v6,5));			
+			v4.addEdge(new Node("v6", v6,8)).addEdge(new Node("v7", v7,4)).
+			   addEdge(new Node("v3", v3,2)).addEdge(new Node("v5", v5,2));			
+			v5.addEdge(new Node("v7", v7,6));			
+			v7.addEdge(new Node("v6", v6,1));
+			
+			ArrayList<Vertex> buildList = new ArrayList<Vertex>();
+			buildList.add(v1);
+			buildList.add(v2);
+			buildList.add(v3);
+			buildList.add(v4);
+			buildList.add(v5);
+			buildList.add(v6);
+			buildList.add(v7);
+			
+			costDAG.setVa(buildList);
+		}
+		
+		return costDAG;		
+	}
 	
 	public static Graph buildDirectionalLoopedGraph() {
 		if (directionalLoopedGraph == null) {
@@ -101,7 +138,7 @@ public class Graph {
 	public static void main(String[] args) {		
 		
 		//打印
-		ArrayList<Vertex> alv = Graph.buildDirectionalNoLoopGraph().getVa();
+		ArrayList<Vertex> alv = Graph.buildCostDAG().getVa();
 		for (int i =0; i<alv.size(); i++) {
 			alv.get(i).trackLink();
 		}

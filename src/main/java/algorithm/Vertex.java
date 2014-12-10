@@ -18,6 +18,37 @@ public class Vertex {
 	//上一个邻接的顶点
 	Vertex pathVertex;
 
+	//有向有权图，最短路径Dijkstra
+	boolean known;
+	//到某个顶点的最短路径
+	int dist;
+	//上一个最短顶点记录
+	Vertex dijkPath;
+	
+	public boolean isKnown() {
+		return known;
+	}
+
+	public void setKnown(boolean known) {
+		this.known = known;
+	}
+
+	public int getDist() {
+		return dist;
+	}
+
+	public void setDist(int dist) {
+		this.dist = dist;
+	}
+
+	public Vertex getDijkPath() {
+		return dijkPath;
+	}
+
+	public void setDijkPath(Vertex dijkPath) {
+		this.dijkPath = dijkPath;
+	}
+
 	protected Vertex(String name) {
 		this.name = name;
 		inDegree = 0;
@@ -95,8 +126,9 @@ public class Vertex {
 	public void trackLink() {
 		Node cursor = start;
 		StringBuffer sb = new StringBuffer();
+		sb.append("Start from:").append(this.getName()).append(" -> ");
 		while (cursor != null) {
-			sb.append(cursor.getName()).append(" -> ");
+			sb.append(cursor.getName()).append(": ").append(cursor.getEdgeCost()).append(" -> ");
 			cursor = cursor.getNext();
 		}
 		sb.append("\n");

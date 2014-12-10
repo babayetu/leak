@@ -41,4 +41,6 @@ public class LinkedList4QandStack {
 			System.out.println(al.getStack().pop());
 		}
 	}
+
+	
 }
