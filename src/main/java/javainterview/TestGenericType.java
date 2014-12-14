@@ -2,6 +2,7 @@ package javainterview;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 
 public class TestGenericType {
 	public static double totalArea(Collection<? extends Shape> arr) {
@@ -32,6 +33,16 @@ public class TestGenericType {
 		}
 		return arr[maxInt];
 	}
+
+	public static <T> T findMin(T[] arr, Comparator<? super T> c) {
+		int minInt = 0;
+		for (int i=0;i<arr.length;i++) {
+			if (c.compare(arr[minInt],arr[i]) > 0) {
+				minInt = i;
+			}
+		}
+		return arr[minInt];
+	}
 	
 	public static void main(String[] args) {
 		Square s1 = new Square(2,3);
@@ -48,6 +59,7 @@ public class TestGenericType {
 		
 		System.out.println(TestGenericType.find(sa, s1));
 		
-		System.out.println(TestGenericType.findMax(sa));
+		SquareComparator sc = new SquareComparator();
+		System.out.println(TestGenericType.findMin(sa,sc));
 	}
 }

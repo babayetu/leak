@@ -8,6 +8,12 @@ public class StringContain {
 			              31,37,41,43,47,53,59,61,67,71,
 			              73,79,83,89,97,101,103,107};
 	
+	// 4byte = 32 bits 可以容纳大小写共26bit字符
+	// 大写
+	int bitMapCap = 1;
+	//小写
+	int bitMapNormal = 1;
+	
 	public boolean include(char[] input) {
 		for (int i=0;i<input.length;i++) {
 			if (!map.containsKey(new Character(input[i]))) {
@@ -20,6 +26,18 @@ public class StringContain {
 	public void setupMap(char[] longer) {
 		for (int i=0;i<longer.length;i++) {
 			map.put(new Character(longer[i]), 1);
+		}
+	}
+	
+	public void setupBitMap(char[] longer) {
+		for (int i=0;i<longer.length;i++) {
+			if (longer[i] < 'a' ) {
+				//是大写字母
+				bitMapCap = bitMapCap | (1<< (longer[i] -'A'));
+			} else {
+				//小写字母
+				bitMapNormal = bitMapNormal | (1<< (longer[i] -'a'));
+			}			
 		}
 	}
 	
@@ -154,5 +172,26 @@ public class StringContain {
 		System.out.println(sb.toString());
 		
 		//sc.sushu(2,5000);
+		
+		//用bit数组的办法设置hashmap
+		//把b放到数组里面
+		String c = "abcdefghijklmndefab";
+		String d = "def";
+		sc.setupBitMap(d.toCharArray());
+		char[] cc = c.toCharArray();
+		//新的数组
+		char[] e = new char[cc.length];
+		//数组长度标识
+		int len = 0;
+		for (int i = 0;i<cc.length;i++) {
+			if ((sc.bitMapCap & (1<< (cc[i] - 'A' ))) == 0 && (sc.bitMapNormal & (1<< (cc[i] - 'a' ))) == 0) {
+				e[len] = cc[i];
+				len++;
+			}
+		}
+		
+		System.out.println(String.copyValueOf(e, 0, len));
+		
+		
 	}
 }
