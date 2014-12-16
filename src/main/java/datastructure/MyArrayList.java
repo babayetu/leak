@@ -86,6 +86,18 @@ public class MyArrayList<T> implements Iterable<T> {
 		return oldValue;
 	}
 	
+	public T[] toArray() {
+		if (size>0) {
+			T[] output = (T[])new Object[size];
+			for (int i=0;i<size;i++) {
+				output[i] = items[i];
+			}
+			return output;
+		} else {
+			return null;
+		}		
+	}
+	
 	public Iterator<T> iterator() {
 		return new ArrayListIterator();
 	}
