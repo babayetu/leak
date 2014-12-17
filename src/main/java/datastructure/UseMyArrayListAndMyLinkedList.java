@@ -64,11 +64,27 @@ public class UseMyArrayListAndMyLinkedList {
 		System.out.println(mll.top());
 	}
 	
+	private void testMyLinkedListAsQueue() {
+		MyLinkedList<Integer> mll = new MyLinkedList<Integer>();
+		for (int i=0;i<8;i++) {
+			mll.enqueue(i);
+		}		
+		
+		System.out.println(mll.size());
+		
+		while (!mll.isEmpty()) {
+			System.out.println(mll.dequeue());
+		}
+		
+		System.out.println(mll.isEmpty());
+	}
+	
 	public static void main(String[] args) {
 		UseMyArrayListAndMyLinkedList umalam = new UseMyArrayListAndMyLinkedList();
 		
 		//umalam.testMyArrayList();
 		//umalam.testMyLinkedListAsArray();
-		umalam.testMyLinkedListAsStack();
+		//umalam.testMyLinkedListAsStack();
+		umalam.testMyLinkedListAsQueue();
 	}
 }

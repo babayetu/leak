@@ -106,6 +106,25 @@ public class MyLinkedList<T> implements Iterable<T> {
 	 * 部分结束
 	 */
 	
+	/*
+	 * 作为queue使用
+	 */
+	public void enqueue(T value) {
+		addBefore(tail,value);
+	}
+	
+	// LinkedList元素从0开始
+	// head <=> 0 <=> 1 <=> tail
+	// size = 2
+	public T dequeue() {
+		return remove(0);
+	}
+
+	/*
+	 * 作为queue使用
+	 * 部分结束
+	 */
+	
 	private static class Node<T> {
 		private T data;
 		private Node<T> prev;
