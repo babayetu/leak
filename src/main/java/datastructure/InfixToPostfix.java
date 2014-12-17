@@ -116,6 +116,12 @@ public class InfixToPostfix {
 		return output;
 	}
 
+	/**
+	 * 使用String[]储存后缀表达式，可以做到多位数字的存储。也可以完成float，double等数据的存储
+	 * 这点是char[]做不到的
+	 * @param sInput
+	 * @return
+	 */
 	public String[] transform(String sInput) {
 		if (sInput.length() == 0 ) {
 			return null;
@@ -183,10 +189,10 @@ public class InfixToPostfix {
 		}
 		
 		//return output.toArray();
-		System.out.println(output.toArray() instanceof Object[]);
-		System.out.println(output.toArray() instanceof String[]);
+		//System.out.println(output.generateArray(new String[output.size()]) instanceof Object[]);   //true
+		//System.out.println(output.generateArray(new String[output.size()]) instanceof String[]);   // true
 		
-		return null;
+		return output.generateArray(new String[output.size()]);
 	}
 	
 	public static void main(String[] args) {
@@ -195,17 +201,17 @@ public class InfixToPostfix {
 //		System.out.println((int)'0');  //48
 //		System.out.println((int)'9');  //57
 		
-		String[] oa = new String[] {"aaa","bbb"};
-		Object[] sa = (Object[])oa;
+//		String[] oa = new String[] {"aaa","bbb"};
+//		Object[] sa = (Object[])oa;
 		
-		String expr = "az+by*c+(d*e+f)*gt";
+		String expr = "0.21+3.2*42.5+(18*0.4+7.1)*0.3";
 		//abc*+de*f+g*+
 		//char[] output = itp.transform(expr.toCharArray());
 		
 		//System.out.println(String.valueOf(output));
-		//String[] output = itp.transform(expr);
-		/*for (String o : output) {
+		String[] output = itp.transform(expr);
+		for (String o : output) {
 			System.out.println(o);
-		}*/
+		}
 	}
 }

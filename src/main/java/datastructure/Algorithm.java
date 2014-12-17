@@ -11,17 +11,17 @@ package datastructure;
  *
  */
 public class Algorithm {
-	private MyLinkedList<Integer> stack = new MyLinkedList<Integer>();
+	private MyLinkedList<Double> stack = new MyLinkedList<Double>();
 	
-	private int calculate(String[] postFix) {
+	private Double calculate(String[] postFix) {
 		int i=0;
 		while (i<postFix.length) {
 			int pri = InfixToPostfix.priority(postFix[i]);
 			if (pri > 0) {
 				//是操作符
-				Integer a = stack.pop();
-				Integer b = stack.pop();
-				Integer c = null;
+				Double a = stack.pop();
+				Double b = stack.pop();
+				Double c = null;
 				
 				if (postFix[i].equals("+")) {
 					c = a + b;
@@ -41,7 +41,7 @@ public class Algorithm {
 				i++;
 			} else {
 				//数字直接入栈				
-				stack.push(Integer.valueOf(postFix[i]));
+				stack.push(Double.valueOf(postFix[i]));
 				i++;
 			}
 		}
@@ -54,7 +54,7 @@ public class Algorithm {
 		InfixToPostfix itp = new InfixToPostfix();
 		Algorithm al = new Algorithm();
 				
-		String expr = "1+2*3+(4*5+6)*7";
+		String expr = "0.21+3.2*42.5+(18*0.4+7.1)*0.3";
 
 		//去掉()之后，output的长度比原来的expr少几个元素
 		String[] output = itp.transform(expr);

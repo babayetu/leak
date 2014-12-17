@@ -86,13 +86,14 @@ public class MyArrayList<T> implements Iterable<T> {
 		return oldValue;
 	}
 	
-	public T[] toArray() {
-		if (size>0) {
-			T[] output = (T[])new Object[size];
+	//不能叫T[] toArray()，因为List已经有一个函数签名Object[] toArray()了
+	//最后出来的结果不是T[]，而是Object[]
+	public T[] generateArray(T[] t) {
+		if (size>0 && t.length == size) {
 			for (int i=0;i<size;i++) {
-				output[i] = items[i];
+				t[i] = items[i];
 			}
-			return output;
+			return t;
 		} else {
 			return null;
 		}		
