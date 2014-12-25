@@ -16,80 +16,37 @@ public class InterleavingMovies {
 		if (left.length > right.length) {
 			leftIsLonger = true;
 		}
-		
-		int n = 0;  //longer length
-		int m=0;
+
+		int quota = 1;
 		
 		String[] output = new String[left.length + right.length];
 		
-		int j=0;
-		int i=0;
-		
 		if (leftIsLonger) {
-			n = left.length;
-			m = right.length;
-			int quota = 1;
-			int cursor = 0;
-			
-			while (m < (n / quota - 1)) {
+			// left is longer
+			while (right.length < (left.length / quota - 1)) {
 				quota++;
-			}	
-			
-			while (i<n && j<m) {
-				if (cursor == 0) {
-					output[0] = left[0];
-					cursor++;
-					i++;
-					continue;
-				}
-				if (i % quota != 0) {
-					output[cursor] = left[i];
-					i++;
-					cursor++;
-				} else {
-					output[cursor] = right[j];
-					j++;
-					cursor++;					
-				}				
 			}
-			while (i<n) {
-				output[cursor] = left[i];
-				i++;
-				cursor++;
+			
+			for (int i = 0; i < left.length; i++) {
+				output[i+i/quota] = left[i];
+			}
+			
+			for (int j = 0; j < right.length; j++) {
+				output[j+(j+1)*quota] = right[j];
 			}
 		} else {
 			//right is longer
-			n = right.length;
-			m = left.length;
-			int quota = 1;
-			int cursor = 0;
-			
-			while (m < (n / quota - 1)) {
+			while (left.length < (right.length / quota - 1)) {
 				quota++;
 			}
-
-			while (i<n && j<m) {
-				if (cursor == 0) {
-					output[0] = right[0];
-					cursor++;
-					i++;
-					continue;
-				}
-				if (i % quota != 0) {
-					output[cursor] = right[i];
-					i++;
-					cursor++;
-				} else {
-					output[cursor] = left[j];
-					j++;
-					cursor++;					
-				}				
+			
+			for (int i = 0; i < right.length; i++) {
+				output[i+i/quota] = right[i];
 			}
-			while (i<n) {
-				output[cursor] = right[i];
-				i++;
-				cursor++;
-			}
+			
+			for (int j = 0; j < left.length; j++) {
+				output[j+(j+1)*quota] = left[j];
+			}			
 		}		
 		
 		return output;
