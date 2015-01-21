@@ -1,5 +1,8 @@
 package datastructure;
 
+import util.Print;
+import algorithm.BSTNode;
+
 /**
  * 整数中缀表达式到后缀表达式的转换
  * 算法如下：
@@ -195,6 +198,32 @@ public class InfixToPostfix {
 		return output.generateArray(new String[output.size()]);
 	}
 	
+	//后缀表达式生成表达式操作树，即一个二分查找树，
+	//这个例子演示最大的用途不是用来搜索，而是编译器生成表达式操作树
+	public static BSTNode transformToTree(String[] postfixExp) {
+		if (postfixExp.length == 0) {
+			return null;
+		}
+		
+		MyLinkedList<BSTNode> aStack = new MyLinkedList<BSTNode>();
+		for (int i = 0; i < postfixExp.length; i++) {
+			if (priority(postfixExp[i]) == -1) {
+				//是操作数，而不是操作符
+				aStack.push(new BSTNode(postfixExp[i]));				
+			} else {
+				//是操作符
+				BSTNode oper = new BSTNode(postfixExp[i]);
+				BSTNode right = aStack.pop();
+				BSTNode left = aStack.pop();
+				oper.setLeft(left);
+				oper.setRight(right);
+				aStack.push(oper);
+			}
+		}
+		
+		return aStack.pop();
+	}
+	
 	public static void main(String[] args) {
 		InfixToPostfix itp = new InfixToPostfix();
 		
@@ -204,7 +233,7 @@ public class InfixToPostfix {
 //		String[] oa = new String[] {"aaa","bbb"};
 //		Object[] sa = (Object[])oa;
 		
-		String expr = "0.21+3.2*42.5+(18*0.4+7.1)*0.3";
+		String expr = "1+2*3+(4*5+6)*7";
 		//abc*+de*f+g*+
 		//char[] output = itp.transform(expr.toCharArray());
 		
@@ -213,5 +242,15 @@ public class InfixToPostfix {
 		for (String o : output) {
 			System.out.println(o);
 		}
+		
+		System.out.println();
+		new Print().midOrderBST(transformToTree(output),0);
+		
+//		BSTNode root = transformToTree(output);
+//		System.out.println(root.getValue());
+//		System.out.println(root.getLeft().getValue());
+//		System.out.println(root.getRight().getValue());
+//		System.out.println(root.getLeft().getLeft().getValue());
+//		System.out.println(root.getLeft().getRight().getValue());
 	}
 }

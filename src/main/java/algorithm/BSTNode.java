@@ -31,8 +31,12 @@ public class BSTNode {
 	public void setRight(BSTNode right) {
 		this.right = right;
 	}
-	protected BSTNode(int key, String value) {
+	public BSTNode(int key, String value) {
 		this.key = key;
+		this.value = value;
+	}
+	public BSTNode(String value) {
+		this.key = -1;
 		this.value = value;
 	}
 	

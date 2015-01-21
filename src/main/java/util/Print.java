@@ -7,6 +7,8 @@ import algorithm.Graph;
 import algorithm.Vertex;
 
 public class Print {
+	private StringBuffer sb = new StringBuffer();
+	
 	public static void array (int[] client) {
 		assert(client!=null);
 		StringBuffer sb = new StringBuffer();
@@ -30,16 +32,22 @@ public class Print {
 		}		
 	}
 	
-	public void midOrderBST (BSTNode client) {
+	public void midOrderBST (BSTNode client, int depth) {		
 		//中序遍历也叫做中根遍历，可记做左根右		
 		if (client.getLeft() != null) {
-			midOrderBST(client.getLeft());
+			midOrderBST(client.getLeft(),depth+1);
 		}		
 		
-		System.out.println(client.getKey()+ ":"+ client.getValue());
+		for (int i = 0; i < depth; i++) {
+			sb.append("   ");
+		}
+		
+		sb.append(client.getKey()).append(":").append(client.getValue());
+		System.out.println(sb.toString());
+		sb.delete(0, sb.length());
 		
 		if (client.getRight() != null) {
-			midOrderBST(client.getRight());
+			midOrderBST(client.getRight(),depth+1);
 		}		
 	}
 	
